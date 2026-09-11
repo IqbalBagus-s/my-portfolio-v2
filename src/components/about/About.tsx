@@ -16,7 +16,7 @@ const About = () => {
             <div className="about__data">
                 <Info/>
                 <p className="about__description">
-                    I am an nformatics graduate from UPN “Veteran” East Java specializing in full-stack web development and cloud computing. Experienced in building scalable web applications, designing RESTful APIs, and solving complex technical problems. Adaptable, analytical, and ready to collaborate in delivering reliable software solutions.
+                    I am an informatics graduate from UPN “Veteran” East Java specializing in full-stack web development and cloud computing. Experienced in building scalable web applications, designing RESTful APIs, and solving complex technical problems. Adaptable, analytical, and ready to collaborate in delivering reliable software solutions.
                 </p>
                 <a download href={CV} className="button button--flex">
                     Download CV

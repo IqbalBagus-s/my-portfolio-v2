@@ -1,8 +1,8 @@
 import Work1 from '../../assets/project1.mp4'
 import Work2 from '../../assets/project2.mp4'
 import work3 from '../../assets/portfolio-website.png'
-import Work4 from '../../assets/project4.mp4'
-import Work5 from '../../assets/project5.mp4'
+import Work4 from '../../assets/project4.png'
+import Work5 from '../../assets/project5.png'
 
 // Definisi tipe Project
 export type Project = {
