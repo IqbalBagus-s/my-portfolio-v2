@@ -29,9 +29,9 @@ const Qualification = () => {
                     <div className="qualification__data">
                         <div>
                             <h3 className="qualification__title">Universitas Pembangunan Nasional Veteran Jawa Timur</h3>
-                            <span className="qualification__subtitle">Currently pursuing a Bachelor's degree in Informatics Engineering.</span>
+                            <span className="qualification__subtitle">Graduated with a Bachelor's degree in Informatics Engineering in 2026.</span>
                             <div className="qualification__calender">
-                                <i className="uil uil-calendar-alt"></i> 2022 - Now
+                                <i className="uil uil-calendar-alt"></i> 2022 - 2026
                             </div>
                         </div>
 
@@ -62,12 +62,16 @@ const Qualification = () => {
                 <div className={toggleState === 2 ? "qualification__content qualification__content-active" : "qualification__content"}>
                     <div className="qualification__data">
                         <div>
-                            <h3 className="qualification__title">Cloud Computing Graduate Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka</h3>
+                            <h3 className="qualification__title">Website Developer At PT Asia Pramulia</h3>
                             <span className="qualification__subtitle">
-                                - Cloud Technology: Designing and managing solutions with GCP. <br />- Backend Development: Building scalable APIs. <br />- Machine Learning: Applying ML models to real use cases. <br />- Capstone Project: Combining cloud and ML in a final project. <br />- Soft Skills: Time management, problem-solving, teamwork.
+                                - UI/UX Design: Created user-friendly designs tailored for non-technical users.<br />
+                                - Requirement Analysis: Conducted analysis of user needs for web applications.<br />
+                                - Modern Frameworks: Utilized the latest frameworks in development.<br />
+                                - Application Testing: Performed testing based on IEEE 829 standards.<br />
+                                - Local Hosting: Deployed applications on local servers using computer networks.<br />
                             </span>
                             <div className="qualification__calender">
-                                <i className="uil uil-calendar-alt"></i> 2024 - 2025
+                                <i className="uil uil-calendar-alt"></i> Feb 2025 - Jun 2025
                             </div>
                         </div>
 
@@ -84,16 +88,12 @@ const Qualification = () => {
                             <span className="qualification__line"></span>
                         </div>
                         <div>
-                            <h3 className="qualification__title">Website Developer At PT Asia Pramulia</h3>
+                            <h3 className="qualification__title">Cloud Computing Graduate Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka</h3>
                             <span className="qualification__subtitle">
-                                - UI/UX Design: Created user-friendly designs tailored for non-technical users.<br />
-                                - Requirement Analysis: Conducted analysis of user needs for web applications.<br />
-                                - Modern Frameworks: Utilized the latest frameworks in development.<br />
-                                - Application Testing: Performed testing based on IEEE 829 standards.<br />
-                                - Local Hosting: Deployed applications on local servers using computer networks.<br />
+                                - Cloud Technology: Designing and managing solutions with GCP. <br />- Backend Development: Building scalable APIs. <br />- Machine Learning: Applying ML models to real use cases. <br />- Capstone Project: Combining cloud and ML in a final project. <br />- Soft Skills: Time management, problem-solving, teamwork.
                             </span>
                             <div className="qualification__calender">
-                                <i className="uil uil-calendar-alt"></i> 2025 - 2026
+                                <i className="uil uil-calendar-alt"></i> Sep 2024 - Jan 2025
                             </div>
                         </div>
                     </div>
