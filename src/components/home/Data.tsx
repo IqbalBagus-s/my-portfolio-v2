@@ -15,7 +15,7 @@ const Data = () => {
             Crafting Creative and Functional Web Solutions for Digital Excellence
         </p>
 
-        <a href="#" className="button button-flex">
+        <a href="#contact" className="button button-flex">
             Contact Me!
             <svg
                 className="button__icon"
