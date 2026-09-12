@@ -38,7 +38,7 @@ export const projectsData: Project[] = [
     image: work3,
     title: 'Project 3: Portfolio Website',
     category: 'design',
-    url: 'https://iqbalbagus-s.github.io/my-portfolio-v2/',
+    url: 'https://github.com/IqbalBagus-s/my-portfolio-v2',
     mediaType: 'image',
   },
   {

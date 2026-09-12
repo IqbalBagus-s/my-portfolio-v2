@@ -72,6 +72,12 @@
     height: 13px;
     background-color: var(--text-color);
     border-radius: 50%;
+    opacity: 0;
+    transform: scale(0);
+    transition-property: transform, opacity;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
+    transition-delay: calc(var(--i, 0) * 0.55s);
 }
 
 .qualification__line {
@@ -79,7 +85,35 @@
     width: 1px;
     height: 100%;
     background-color: var(--text-color);
-    transform: translate(6px, -7px);
+    transform: translate(6px, -7px) scaleY(0);
+    transform-origin: top;
+    transition-property: transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    transition-delay: calc(var(--i, 0) * 0.55s + 0.3s);
+}
+
+.qualification__data--visible .qualification__rounder {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.qualification__data--visible .qualification__line {
+    transform: translate(6px, -7px) scaleY(1);
+}
+
+.qualification__content-item {
+    opacity: 0;
+    transform: translateY(15px);
+    transition-property: opacity, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    transition-delay: calc(var(--i, 0) * 0.55s);
+}
+
+.qualification__data--visible .qualification__content-item {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* breakpoints */
