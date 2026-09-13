@@ -12,20 +12,63 @@
     width: 410px;
     border-radius: 1.5rem;
     justify-self: center;
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.about__img--visible {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .about__info {
-    grid-template-columns: repeat(3, 140px);
-    gap: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    width: 100%;
     margin-bottom: var(--mb-2);
 }
+
+.about__info-wrapper {
+    width: 100%;
+}
+
+.about__info-wrapper .about__box {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.about__info-wrapper .about__box--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* about__data sekarang murni container layout, tidak lagi punya animasi sendiri */
 
 .about__box {
     background-color: var(--container-color);
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 0.75rem;
     text-align: center;
-    padding: 1rem 1.25rem;
+
+    padding: 1rem 0.5rem;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.about__box--visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about__box--visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .about__icon {
@@ -46,13 +89,37 @@
 .about__description {
     padding: 0 4rem 0 0;
     margin-bottom: var(--mb-2-5);
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.6s ease 0.36s,
+        transform 0.6s ease 0.36s;
+}
+
+.about__description--visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .button {
-  display: inline-flex;
-  align-items: center;   /* vertikal center */
-  justify-content: center;
-  gap: 0.5rem;           /* jarak antara teks dan ikon */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    opacity: 0;
+    transform: translateY(20px);
+
+    transition:
+        opacity 0.6s ease 0.48s,
+        transform 0.6s ease 0.48s;
+}
+
+.button--visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .button__icon {
@@ -74,16 +141,18 @@
         width: 220px;
     }
 
-    .about__box {
-        padding: 0.75rem 0.5rem;
-    }
-
     .about__data {
         text-align: center;
     }
 
     .about__info {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         justify-content: center;
+        gap: 0.75rem;
+    }
+
+    .about__box {
+        padding: 0.75rem 0.5rem;
     }
 
     .about__description {
@@ -95,7 +164,12 @@
 /* medium device */
 @media screen and (max-width: 576px) {
     .about__info {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.5rem;
+    }
+
+    .about__box {
+        padding: 0.75rem 0.25rem;
     }
 
     .about__description {

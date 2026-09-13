@@ -1,24 +1,95 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import './contact.css'
 
+const COOLDOWN_MS = 60000;
+const STORAGE_KEY = 'lastEmailSentAt';
+const TOAST_DURATION = 4000;
+
+type ToastType = 'success' | 'error' | 'warning';
+
+interface ToastState {
+    message: string;
+    type: ToastType;
+}
+
 const Contact = () => {
     const form = useRef<HTMLFormElement>(null);
+    const [isSending, setIsSending] = useState(false);
+    const [toast, setToast] = useState<ToastState | null>(null);
+    const [isToastLeaving, setIsToastLeaving] = useState(false);
+
+    const showToast = (message: string, type: ToastType) => {
+        setToast({ message, type });
+        setIsToastLeaving(false);
+    };
+
+    const closeToast = () => {
+        setIsToastLeaving(true);
+        setTimeout(() => setToast(null), 300);
+    };
+
+    useEffect(() => {
+        if (!toast) return;
+        const timer = setTimeout(() => {
+            closeToast();
+        }, TOAST_DURATION);
+        return () => clearTimeout(timer);
+    }, [toast]);
+
+    const getRemainingCooldown = (): number => {
+        const lastSent = localStorage.getItem(STORAGE_KEY);
+        if (!lastSent) return 0;
+        const elapsed = Date.now() - parseInt(lastSent, 10);
+        return Math.max(0, COOLDOWN_MS - elapsed);
+    };
 
     const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        if (!form.current?.checkValidity()) {
+            form.current?.reportValidity();
+            return;
+        }
+
+        const remaining = getRemainingCooldown();
+        if (remaining > 0) {
+            const secondsLeft = Math.ceil(remaining / 1000);
+            showToast(`Mohon tunggu ${secondsLeft} detik sebelum mengirim lagi.`, 'warning');
+            return;
+        }
+
+        if (isSending) return;
+
+        setIsSending(true);
+
         emailjs
-        .sendForm(
-            "service_b5j5d3g",
-            "template_z9ujzei",
-            form.current!,
-            { publicKey: "tCjIdcDMW79_BDXV5" }
-        )
-        .then(() => {
-            (e.target as HTMLFormElement).reset();
-        });
+            .sendForm(
+                "service_b5j5d3g",
+                "template_z9ujzei",
+                form.current!,
+                { publicKey: "tCjIdcDMW79_BDXV5" }
+            )
+            .then(() => {
+                localStorage.setItem(STORAGE_KEY, Date.now().toString());
+                (e.target as HTMLFormElement).reset();
+                showToast("Message successfully sent! I will reply as soon as possible.", 'success');
+            })
+            .catch((error) => {
+                console.error("Gagal mengirim email:", error);
+                showToast("Gagal mengirim pesan. Coba lagi nanti.", 'error');
+            })
+            .finally(() => {
+                setIsSending(false);
+            });
     };
+
+    const toastIcon = {
+        success: 'bx-check-circle',
+        error: 'bx-error-circle',
+        warning: 'bx-time-five',
+    };
+
   return (
     <section className='contact section' id='contact'>
         <h2 className='section__title'>Get In Touch</h2>
@@ -30,52 +101,64 @@ const Contact = () => {
                 <div className="contact__info">
                     <div className="contact__card">
                         <i className="bx bx-mail-send contact__card-icon"></i>
-
                         <h3 className="contact__card-title">Email</h3>
                         <span className="contact__card-data">iqbalbagussatriawan@gmail.com</span>
-
                         <a href="mailto:iqbalbagussatriawan@gmail.com" className="contact__button">Write Me <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
                     </div>
 
                     <div className="contact__card">
                         <i className="bx bxl-whatsapp contact__card-icon"></i>
-
                         <h3 className="contact__card-title">WhatsApp</h3>
                         <span className="contact__card-data">+62-8233-5490-445</span>
-
                         <a href="https://wa.me/+6282335490445" className="contact__button">Write Me <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
                     </div>
                 </div>
             </div>
             <div className="contact__content">
                 <h3 className="contact__title">Write me your project</h3>
-                <form  ref={form} onSubmit={sendEmail}>
+                <form ref={form} onSubmit={sendEmail} noValidate>
                     <div className="contact__form-div">
                         <label className="contact__form-tag">Name</label>
-                        <input 
-                        type="text" 
-                        name='name' 
-                        className='contact__form-input'
-                        placeholder='Insert your name'
+                        <input
+                            type="text"
+                            name='name'
+                            className='contact__form-input'
+                            placeholder='Insert your name'
+                            required
+                            minLength={2}
                         />
                     </div>
-                    
+
                     <div className="contact__form-div">
                         <label className="contact__form-tag">Email</label>
-                        <input 
-                        type="email" 
-                        name='email' 
-                        className='contact__form-input'
-                        placeholder='Insert your email'
+                        <input
+                            type="email"
+                            name='email'
+                            className='contact__form-input'
+                            placeholder='Insert your email'
+                            required
                         />
                     </div>
                     <div className="contact__form-div contact__form-area">
                         <label className="contact__form-tag">Project</label>
-                        <textarea name="project" cols={30} rows={10} className="contact__form-input" placeholder='Write your project'></textarea>
+                        <textarea
+                            name="project"
+                            cols={30}
+                            rows={10}
+                            className="contact__form-input"
+                            placeholder='Write your project'
+                            required
+                            minLength={10}
+                        ></textarea>
                     </div>
 
-                    <button className="button button-flex">
-                        Send Message!
+                    <button
+                        type="submit"
+                        className="button button-flex"
+                        disabled={isSending}
+                        style={{ opacity: isSending ? 0.6 : 1, cursor: isSending ? 'not-allowed' : 'pointer' }}
+                    >
+                        {isSending ? 'Sending...' : 'Send Message!'}
                         <svg
                             className="button__icon"
                             xmlns="http://www.w3.org/2000/svg"
@@ -96,6 +179,17 @@ const Contact = () => {
                 </form>
             </div>
         </div>
+
+        {toast && (
+            <div className={`toast toast--${toast.type} ${isToastLeaving ? 'toast--leaving' : ''}`}>
+                <i className={`bx ${toastIcon[toast.type]} toast__icon`}></i>
+                <span className="toast__message">{toast.message}</span>
+                <button className="toast__close" onClick={closeToast} aria-label="Tutup notifikasi">
+                    <i className="bx bx-x"></i>
+                </button>
+                <div className="toast__progress"></div>
+            </div>
+        )}
     </section>
   )
 }

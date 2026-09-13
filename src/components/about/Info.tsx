@@ -1,25 +1,57 @@
-import "../about/about.css"
+import "../about/about.css";
 
-const Info = () => {
-  return (
-    <div className="about__info grid">
-        <div className="about__box">
-            <i className="bx bx-award about__icon"></i>
-            <h3 className="about__title">Experience</h3>
-            <span className="about__subtitle">9 Months Working</span>
-        </div>
-        <div className="about__box">
-            <i className="bx bx-briefcase-alt about__icon"></i>
-            <h3 className="about__title">Completed</h3>
-            <span className="about__subtitle">5+ Projects</span>
-        </div>
-        <div className="about__box">
-            <i className="bx bx-code-alt about__icon"></i>
-            <h3 className="about__title">Tech Stack</h3>
-            <span className="about__subtitle">12+ Tech Expertise</span>
-        </div>
-    </div>
-  )
+interface InfoProps {
+  inView: boolean;
 }
 
-export default Info
+const items = [
+  {
+    icon: "bx-award",
+    title: "Experience",
+    subtitle: "9 Months Working",
+  },
+  {
+    icon: "bx-briefcase-alt",
+    title: "Completed",
+    subtitle: "5+ Projects",
+  },
+  {
+    icon: "bx-code-alt",
+    title: "Tech Stack",
+    subtitle: "12+ Tech Expertise",
+  },
+];
+
+const Info = ({ inView }: InfoProps) => {
+  return (
+    <div className="about__info grid">
+      {items.map((item, i) => (
+        <div
+          key={item.title}
+          className={`about__box ${
+            inView
+              ? "about__box--visible"
+              : ""
+          }`}
+          style={{
+            transitionDelay: `${i * 120}ms`,
+          }}
+        >
+          <i
+            className={`bx ${item.icon} about__icon`}
+          ></i>
+
+          <h3 className="about__title">
+            {item.title}
+          </h3>
+
+          <span className="about__subtitle">
+            {item.subtitle}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default Info;
