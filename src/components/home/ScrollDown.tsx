@@ -1,7 +1,10 @@
+// src/components/home/ScrollDown.tsx
 import type { CSSProperties } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const ScrollDown = () => {
-  // Definisikan style objects untuk SVG
+  const { t } = useTranslation();
+
   const svgStyle: CSSProperties = {
     fillRule: 'evenodd',
     clipRule: 'evenodd',
@@ -46,7 +49,7 @@ const ScrollDown = () => {
                   style={mouseStyle}
                 ></path>
               </svg>
-            <span className="home__scroll-name">Scroll Down</span>
+            <span className="home__scroll-name">{t('home.scrollDown')}</span>
             <i className="uil uil-arrow-down home__scroll-arrow"></i>
         </a>
     </div>

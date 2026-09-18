@@ -1,44 +1,47 @@
+// src/components/portfolio/Works.tsx
 import { useEffect, useState } from "react"
-import { projectsData, projectNav, type Project } from "./Data"
+import { useTranslation } from "react-i18next"
+import { projectsData, projectNavKeys, type Project } from "./Data"
 import WorkItems from "./WorkItems"
 
 const Works = () => {
-  const [item, setItem] = useState<{ name: string }>({ name: "all" })
-  const [projects, setProjects] = useState<Project[]>([])  // ⬅️ kasih tipe
+  const { t } = useTranslation()
+  const [activeCategory, setActiveCategory] = useState<string>("all")
+  const [projects, setProjects] = useState<Project[]>([])
   const [active, setActive] = useState(0)
 
   useEffect(() => {
-    if (item.name === "all") {
+    if (activeCategory === "all") {
       setProjects(projectsData)
     } else {
       const newProjects = projectsData.filter((project) => {
-        return project.category === item.name
+        return project.category === activeCategory
       })
       setProjects(newProjects)
     }
-  }, [item])
+  }, [activeCategory])
 
-  const handleClick = (e: React.MouseEvent<HTMLSpanElement>, index: number) => {
-    setItem({ name: e.currentTarget.textContent ?? "all" }) // ⬅️ fix typo "texContent"
+  const handleClick = (categoryKey: string, index: number) => {
+    setActiveCategory(categoryKey)
     setActive(index)
   }
 
   return (
     <>
       <div className="work__filters">
-        {projectNav.map((navItem, index) => (
+        {projectNavKeys.map((key, index) => (
           <span
-            onClick={(e) => handleClick(e, index)}
+            onClick={() => handleClick(key, index)}
             className={`${active === index ? "active-work" : ""} work__item`}
-            key={index}
+            key={key}
           >
-            {navItem.name}
+            {t(`portfolio.filters.${key}`)}
           </span>
         ))}
       </div>
 
       <div className="work__container container grid">
-        {projects.map((item) => (   // ⬅️ harus pakai projects, bukan projectsData
+        {projects.map((item) => (
           <WorkItems item={item} key={item.id} />
         ))}
       </div>

@@ -1,0 +1,168 @@
+{
+  "nav": {
+    "logo": "Portofolio Saya",
+    "home": "Beranda",
+    "about": "Tentang",
+    "skills": "Keahlian",
+    "services": "Layanan",
+    "portfolio": "Portofolio",
+    "contact": "Kontak"
+  },
+  "home": {
+    "greeting": "Hai! Saya Iqbal Bagus Satriawan",
+    "subtitle": "Pengembang Website",
+    "description": "Merancang Solusi Web Kreatif dan Fungsional untuk Keunggulan Digital",
+    "contactButton": "Hubungi Saya!",
+    "scrollDown": "Gulir ke Bawah"
+  },
+  "about": {
+    "title": "Tentang Saya",
+    "subtitle": "Perkenalan Saya",
+    "description": "Saya lulusan Informatika UPN \"Veteran\" Jawa Timur yang fokus pada pengembangan web full-stack dan cloud computing. Berpengalaman membangun aplikasi web yang scalable, merancang RESTful API, dan menyelesaikan masalah teknis yang kompleks. Adaptif, analitis, dan siap berkolaborasi memberikan solusi perangkat lunak yang andal.",
+    "downloadCV": "Unduh CV",
+    "info": {
+      "experience": { "title": "Pengalaman", "subtitle": "9 Bulan Bekerja" },
+      "completed": { "title": "Selesai", "subtitle": "5+ Proyek" },
+      "techStack": { "title": "Tech Stack", "subtitle": "12+ Keahlian Teknologi" }
+    }
+  },
+  "skills": {
+    "title": "Keahlian",
+    "subtitle": "Tingkat Teknis Saya",
+    "fullstack": {
+      "title": "Fullstack Developer",
+      "backend": { "name": "Pengembangan Backend", "level": "Mahir" },
+      "frontend": { "name": "Pengembangan Frontend", "level": "Menengah" },
+      "uiux": { "name": "Desainer UI/UX", "level": "Dasar" }
+    },
+    "cloud": {
+      "title": "Cloud Engineer",
+      "gcp": { "name": "Google Cloud Platform", "level": "Menengah" },
+      "database": { "name": "Database & Penyimpanan", "level": "Menengah" },
+      "compute": { "name": "Manajemen Komputasi Cloud", "level": "Menengah" }
+    },
+    "ml": {
+      "title": "ML Engineer",
+      "mlops": { "name": "Operasional Machine Learning", "level": "Menengah" },
+      "programming": { "name": "Pemrograman & Perkakas", "level": "Mahir" },
+      "fundamental": { "name": "Dasar Machine Learning", "level": "Dasar" }
+    }
+  },
+  "services": {
+    "title": "Layanan",
+    "subtitle": "Apa yang Saya Kerjakan.",
+    "viewMore": "Lihat Selengkapnya",
+    "web": {
+      "title": "Pengembangan Website Kustom",
+      "modalName": "Pengembangan Website Kustom",
+      "modalDescription": "Membangun website responsif yang disesuaikan dengan kebutuhan klien.",
+      "items": [
+        "Mengembangkan website kustom dengan framework frontend modern.",
+        "Membangun sistem backend dan REST API yang scalable.",
+        "Memastikan desain responsif di semua perangkat.",
+        "Mengoptimalkan website untuk performa dan SEO."
+      ]
+    },
+    "ml": {
+      "title": "Pengembangan Model Machine Learning",
+      "modalName": "Pengembangan Model Machine Learning",
+      "modalDescription": "Menghadirkan solusi cerdas melalui model machine learning kustom.",
+      "items": [
+        "Merancang dan melatih model machine learning prediktif.",
+        "Melakukan preprocessing data dan feature engineering.",
+        "Menerapkan model ke dalam aplikasi web atau mobile."
+      ]
+    },
+    "cloud": {
+      "title": "Penyiapan Infrastruktur Cloud",
+      "modalName": "Penyiapan Infrastruktur Cloud",
+      "modalDescription": "Menyiapkan infrastruktur cloud yang aman dan scalable dengan Google Cloud Platform (GCP).",
+      "items": [
+        "Melakukan deployment aplikasi menggunakan layanan GCP seperti Cloud Run atau VM Instances.",
+        "Mengonfigurasi dan mengelola database & storage sesuai kebutuhan aplikasi.",
+        "Menyiapkan IAM (Identity & Access Management) untuk kontrol akses yang aman."
+      ]
+    }
+  },
+  "qualification": {
+    "title": "Kualifikasi",
+    "subtitle": "Perjalanan Pribadi Saya",
+    "tabs": { "education": "Pendidikan", "experience": "Pengalaman" },
+    "education": [
+      {
+        "title": "Universitas Pembangunan Nasional Veteran Jawa Timur",
+        "subtitle": "Lulus dengan gelar Sarjana Teknik Informatika pada tahun 2026.",
+        "date": "2022 - 2026"
+      },
+      {
+        "title": "SMAN 1 Magetan",
+        "subtitle": "Lulus dari jenjang SMA.",
+        "date": "2019 - 2022"
+      }
+    ],
+    "experience": [
+      {
+        "title": "Website Developer di PT Asia Pramulia",
+        "items": [
+          "Desain UI/UX: Membuat desain yang ramah pengguna untuk pengguna non-teknis.",
+          "Analisis Kebutuhan: Melakukan analisis kebutuhan pengguna untuk aplikasi web.",
+          "Framework Modern: Menggunakan framework terbaru dalam pengembangan.",
+          "Pengujian Aplikasi: Melakukan pengujian berdasarkan standar IEEE 829.",
+          "Hosting Lokal: Melakukan deployment aplikasi pada server lokal menggunakan jaringan komputer."
+        ],
+        "date": "Feb 2025 - Jun 2025"
+      },
+      {
+        "title": "Lulusan Cloud Computing Bangkit Academy oleh Google, Tokopedia, Gojek, & Traveloka",
+        "items": [
+          "Teknologi Cloud: Merancang dan mengelola solusi dengan GCP.",
+          "Pengembangan Backend: Membangun API yang scalable.",
+          "Machine Learning: Menerapkan model ML pada kasus nyata.",
+          "Proyek Capstone: Menggabungkan cloud dan ML dalam proyek akhir.",
+          "Soft Skill: Manajemen waktu, pemecahan masalah, kerja tim."
+        ],
+        "date": "Sep 2024 - Jan 2025"
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Portofolio",
+    "subtitle": "Proyek di bidang pengembangan web, cloud computing, dan machine learning.",
+    "filters": { "all": "semua", "website": "website", "design": "desain" },
+    "viewRepository": "Lihat Repositori"
+  },
+  "contact": {
+    "title": "Hubungi Saya",
+    "subtitle": "Kontak Saya",
+    "talkToMe": "Bicara Dengan Saya",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "writeMe": "Kirim Pesan",
+    "formTitle": "Tuliskan proyek Anda",
+    "nameLabel": "Nama",
+    "namePlaceholder": "Masukkan nama Anda",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Masukkan email Anda",
+    "projectLabel": "Proyek",
+    "projectPlaceholder": "Tuliskan proyek Anda",
+    "sendButton": "Kirim Pesan!",
+    "sending": "Mengirim...",
+    "toast": {
+      "cooldown": "Mohon tunggu {{seconds}} detik sebelum mengirim lagi.",
+      "success": "Pesan berhasil dikirim! Saya akan membalas secepatnya.",
+      "error": "Gagal mengirim pesan. Coba lagi nanti.",
+      "closeAria": "Tutup notifikasi"
+    }
+  },
+  "footer": {
+    "title": "Portofolio Saya",
+    "about": "Tentang Saya",
+    "projects": "Proyek Saya",
+    "contact": "Kontak Saya"
+  },
+  "language": {
+    "label": "Bahasa",
+    "en": "EN",
+    "id": "ID"
+  }
+}

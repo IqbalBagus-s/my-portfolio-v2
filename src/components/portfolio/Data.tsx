@@ -1,3 +1,4 @@
+// src/components/portfolio/Data.tsx
 import Work1 from '../../assets/project1.mp4'
 import Work2 from '../../assets/project2.mp4'
 import work3 from '../../assets/portfolio-website.png'
@@ -52,16 +53,15 @@ export const projectsData: Project[] = [
   {
     id: 5,
     image: Work5,
-    title: 'Project 5: MediStore',
+    title: 'Project 5: Clinify',
     category: 'website',
-    url: 'https://github.com/IqbalBagus-s/MediStore',
+    url: 'https://github.com/IqbalBagus-s/clinify',
     mediaType: 'image',
   },
 ]
 
-// Data navigasi kategori
-export const projectNav = [
-  { name: 'all' },
-  { name: 'website' },
-  { name: 'design' },
-]
+// Kunci kategori filter. Nilai di array ini TETAP berbahasa Inggris karena
+// dipakai untuk mencocokkan project.category — bukan untuk ditampilkan.
+// Label yang tampil ke pengguna diambil dari translation.json lewat
+// t(`portfolio.filters.${key}`) di Works.tsx.
+export const projectNavKeys: string[] = ['all', 'website', 'design']

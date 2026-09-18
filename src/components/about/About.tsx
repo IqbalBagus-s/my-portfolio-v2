@@ -1,4 +1,7 @@
+// src/components/about/About.tsx
+
 import { useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import "./about.css";
 import "../../App.css";
 import Info from "./Info";
@@ -6,6 +9,8 @@ import AboutImg from "../../assets/home-dark.jpeg";
 import CV from "../../assets/CV 2.2.pdf";
 
 const About = () => {
+  const { t } = useTranslation();
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   const [visible, setVisible] = useState<Set<string>>(new Set());
@@ -59,16 +64,23 @@ const About = () => {
 
   return (
     <section className="about section" id="about">
-      <h2 className="section__title">About Me</h2>
 
+      {/* Section Title */}
+      <h2 className="section__title">
+        {t("about.title")}
+      </h2>
+
+      {/* Section Subtitle */}
       <span className="section__subtitle">
-        My Introduction
+        {t("about.subtitle")}
       </span>
 
       <div
         ref={containerRef}
         className="about__container container grid"
       >
+
+        {/* About Image */}
         <img
           src={AboutImg}
           alt=""
@@ -82,6 +94,7 @@ const About = () => {
 
         <div className="about__data">
 
+          {/* Information */}
           <div
             data-about-animation="info"
             className="about__info-wrapper"
@@ -89,6 +102,7 @@ const About = () => {
             <Info inView={isVisible("info")} />
           </div>
 
+          {/* Description */}
           <p
             data-about-animation="description"
             className={`about__description ${
@@ -97,16 +111,10 @@ const About = () => {
                 : ""
             }`}
           >
-            I am an informatics graduate from UPN
-            "Veteran" East Java specializing in full-stack
-            web development and cloud computing. Experienced
-            in building scalable web applications, designing
-            RESTful APIs, and solving complex technical
-            problems. Adaptive, analytical, and ready to
-            collaborate in delivering reliable software
-            solutions.
+            {t("about.description")}
           </p>
 
+          {/* Download CV Button */}
           <a
             data-about-animation="button"
             download
@@ -117,7 +125,7 @@ const About = () => {
                 : ""
             }`}
           >
-            Download CV
+            {t("about.downloadCV")}
 
             <svg
               className="button__icon"

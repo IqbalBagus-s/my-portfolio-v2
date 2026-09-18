@@ -1,28 +1,32 @@
+// src/components/about/Info.tsx
+import { useTranslation } from "react-i18next";
 import "../about/about.css";
 
 interface InfoProps {
   inView: boolean;
 }
 
-const items = [
-  {
-    icon: "bx-award",
-    title: "Experience",
-    subtitle: "9 Months Working",
-  },
-  {
-    icon: "bx-briefcase-alt",
-    title: "Completed",
-    subtitle: "5+ Projects",
-  },
-  {
-    icon: "bx-code-alt",
-    title: "Tech Stack",
-    subtitle: "12+ Tech Expertise",
-  },
-];
-
 const Info = ({ inView }: InfoProps) => {
+  const { t } = useTranslation();
+
+  const items = [
+    {
+      icon: "bx-award",
+      title: t('about.info.experience.title'),
+      subtitle: t('about.info.experience.subtitle'),
+    },
+    {
+      icon: "bx-briefcase-alt",
+      title: t('about.info.completed.title'),
+      subtitle: t('about.info.completed.subtitle'),
+    },
+    {
+      icon: "bx-code-alt",
+      title: t('about.info.techStack.title'),
+      subtitle: t('about.info.techStack.subtitle'),
+    },
+  ];
+
   return (
     <div className="about__info grid">
       {items.map((item, i) => (

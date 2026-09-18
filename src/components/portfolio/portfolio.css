@@ -1,3 +1,4 @@
+/* src/components/portfolio/portfolio.css */
 .work__filters {
     display: flex;
     justify-content: center;
@@ -40,6 +41,11 @@
     object-position: top;
     border-radius: 1rem;
     margin-bottom: var(--mb-1);
+}
+
+.work__video {
+    object-fit: contain;
+    background-color: var(--container-color);
 }
 
 .work__title {

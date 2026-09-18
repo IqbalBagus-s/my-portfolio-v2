@@ -1,22 +1,25 @@
-
+// src/components/home/Data.tsx
+import { useTranslation } from "react-i18next";
 
 const Data = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="home__data">
         <h1 className="home__title">
-            Hi! I'm Iqbal Bagus Satriawan
+            {t('home.greeting')}
         </h1>
 
         <h3 className="home__subtitle">
-            Website Developer
+            {t('home.subtitle')}
         </h3>
 
         <p className="home__description">
-            Crafting Creative and Functional Web Solutions for Digital Excellence
+            {t('home.description')}
         </p>
 
         <a href="#contact" className="button-flex">
-            Contact Me!
+            {t('home.contactButton')}
             <svg
                 className="button__icon"
                 xmlns="http://www.w3.org/2000/svg"

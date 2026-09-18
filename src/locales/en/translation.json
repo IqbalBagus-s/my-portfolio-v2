@@ -1,0 +1,168 @@
+{
+  "nav": {
+    "logo": "My Portfolio",
+    "home": "Home",
+    "about": "About",
+    "skills": "Skills",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hi! I'm Iqbal Bagus Satriawan",
+    "subtitle": "Website Developer",
+    "description": "Crafting Creative and Functional Web Solutions for Digital Excellence",
+    "contactButton": "Contact Me!",
+    "scrollDown": "Scroll Down"
+  },
+  "about": {
+    "title": "About Me",
+    "subtitle": "My Introduction",
+    "description": "I am an informatics graduate from UPN \"Veteran\" East Java specializing in full-stack web development and cloud computing. Experienced in building scalable web applications, designing RESTful APIs, and solving complex technical problems. Adaptive, analytical, and ready to collaborate in delivering reliable software solutions.",
+    "downloadCV": "Download CV",
+    "info": {
+      "experience": { "title": "Experience", "subtitle": "9 Months Working" },
+      "completed": { "title": "Completed", "subtitle": "5+ Projects" },
+      "techStack": { "title": "Tech Stack", "subtitle": "12+ Tech Expertise" }
+    }
+  },
+  "skills": {
+    "title": "Skills",
+    "subtitle": "My Technical Level",
+    "fullstack": {
+      "title": "Fullstack Developer",
+      "backend": { "name": "Backend Development", "level": "Advanced" },
+      "frontend": { "name": "Frontend Development", "level": "Intermediate" },
+      "uiux": { "name": "UI/UX Designer", "level": "Basic" }
+    },
+    "cloud": {
+      "title": "Cloud Engineer",
+      "gcp": { "name": "Google Cloud Platform", "level": "Intermediate" },
+      "database": { "name": "Database & Storage", "level": "Intermediate" },
+      "compute": { "name": "Cloud Compute Management", "level": "Intermediate" }
+    },
+    "ml": {
+      "title": "ML Engineer",
+      "mlops": { "name": "Machine Learning Operations", "level": "Intermediate" },
+      "programming": { "name": "Programming & Tools", "level": "Advanced" },
+      "fundamental": { "name": "Machine Learning Fundamental", "level": "Basic" }
+    }
+  },
+  "services": {
+    "title": "Services",
+    "subtitle": "What I Do.",
+    "viewMore": "View More",
+    "web": {
+      "title": "Custom Website Development",
+      "modalName": "Custom Website Development",
+      "modalDescription": "Building responsive and tailored websites to meet client needs.",
+      "items": [
+        "Develop custom websites with modern frontend frameworks.",
+        "Build scalable backend systems and REST APIs.",
+        "Ensure responsive design for all devices.",
+        "Optimize websites for performance and SEO."
+      ]
+    },
+    "ml": {
+      "title": "Machine Learning Model Development",
+      "modalName": "Machine Learning Model Development",
+      "modalDescription": "Delivering intelligent solutions through custom machine learning models.",
+      "items": [
+        "Design and train predictive machine learning models.",
+        "Perform data preprocessing and feature engineering.",
+        "Deploy models into web or mobile applications."
+      ]
+    },
+    "cloud": {
+      "title": "Cloud Infrastructure Setup",
+      "modalName": "Cloud Infrastructure Setup",
+      "modalDescription": "Setting up secure and scalable cloud infrastructure with Google Cloud Platform (GCP).",
+      "items": [
+        "Deploying applications using GCP services such as Cloud Run or VM Instances.",
+        "Configuring and managing databases & storage for application needs.",
+        "Setting up IAM (Identity & Access Management) to ensure secure access control."
+      ]
+    }
+  },
+  "qualification": {
+    "title": "Qualification",
+    "subtitle": "My Personal Journey",
+    "tabs": { "education": "Education", "experience": "Experience" },
+    "education": [
+      {
+        "title": "Universitas Pembangunan Nasional Veteran Jawa Timur",
+        "subtitle": "Graduated with a Bachelor's degree in Informatics Engineering in 2026.",
+        "date": "2022 - 2026"
+      },
+      {
+        "title": "SMAN 1 Magetan",
+        "subtitle": "Graduated from junior high school.",
+        "date": "2019 - 2022"
+      }
+    ],
+    "experience": [
+      {
+        "title": "Website Developer At PT Asia Pramulia",
+        "items": [
+          "UI/UX Design: Created user-friendly designs tailored for non-technical users.",
+          "Requirement Analysis: Conducted analysis of user needs for web applications.",
+          "Modern Frameworks: Utilized the latest frameworks in development.",
+          "Application Testing: Performed testing based on IEEE 829 standards.",
+          "Local Hosting: Deployed applications on local servers using computer networks."
+        ],
+        "date": "Feb 2025 - Jun 2025"
+      },
+      {
+        "title": "Cloud Computing Graduate Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka",
+        "items": [
+          "Cloud Technology: Designing and managing solutions with GCP.",
+          "Backend Development: Building scalable APIs.",
+          "Machine Learning: Applying ML models to real use cases.",
+          "Capstone Project: Combining cloud and ML in a final project.",
+          "Soft Skills: Time management, problem-solving, teamwork."
+        ],
+        "date": "Sep 2024 - Jan 2025"
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "subtitle": "Projects in web development, cloud computing, and machine learning.",
+    "filters": { "all": "all", "website": "website", "design": "design" },
+    "viewRepository": "View Repository"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Contact Me",
+    "talkToMe": "Talk To me",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "writeMe": "Write Me",
+    "formTitle": "Write me your project",
+    "nameLabel": "Name",
+    "namePlaceholder": "Insert your name",
+    "emailLabel": "Email",
+    "emailPlaceholder": "Insert your email",
+    "projectLabel": "Project",
+    "projectPlaceholder": "Write your project",
+    "sendButton": "Send Message!",
+    "sending": "Sending...",
+    "toast": {
+      "cooldown": "Please wait {{seconds}} seconds before sending again.",
+      "success": "Message successfully sent! I will reply as soon as possible.",
+      "error": "Failed to send message. Please try again later.",
+      "closeAria": "Close notification"
+    }
+  },
+  "footer": {
+    "title": "My Portfolio",
+    "about": "About Me",
+    "projects": "My Projects",
+    "contact": "Contact Me"
+  },
+  "language": {
+    "label": "Language",
+    "en": "EN",
+    "id": "ID"
+  }
+}

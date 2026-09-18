@@ -1,61 +1,28 @@
+// src/components/qualification/Qualification.tsx
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './qualification.css'
 
-interface TimelineItem {
+interface EducationItem {
     title: string;
-    subtitle: React.ReactNode;
+    subtitle: string;
     date: string;
-    alignRight?: boolean;
 }
 
-const educationData: TimelineItem[] = [
-    {
-        title: "Universitas Pembangunan Nasional Veteran Jawa Timur",
-        subtitle: "Graduated with a Bachelor's degree in Informatics Engineering in 2026.",
-        date: "2022 - 2026",
-    },
-    {
-        title: "SMAN 1 Magetan",
-        subtitle: "Graduated from junior high school.",
-        date: "2019 - 2022",
-        alignRight: true,
-    },
-];
-
-const experienceData: TimelineItem[] = [
-    {
-        title: "Website Developer At PT Asia Pramulia",
-        subtitle: (
-            <>
-                - UI/UX Design: Created user-friendly designs tailored for non-technical users.<br />
-                - Requirement Analysis: Conducted analysis of user needs for web applications.<br />
-                - Modern Frameworks: Utilized the latest frameworks in development.<br />
-                - Application Testing: Performed testing based on IEEE 829 standards.<br />
-                - Local Hosting: Deployed applications on local servers using computer networks.<br />
-            </>
-        ),
-        date: "Feb 2025 - Jun 2025",
-    },
-    {
-        title: "Cloud Computing Graduate Bangkit Academy led by Google, Tokopedia, Gojek, & Traveloka",
-        subtitle: (
-            <>
-                - Cloud Technology: Designing and managing solutions with GCP. <br />
-                - Backend Development: Building scalable APIs. <br />
-                - Machine Learning: Applying ML models to real use cases. <br />
-                - Capstone Project: Combining cloud and ML in a final project. <br />
-                - Soft Skills: Time management, problem-solving, teamwork.
-            </>
-        ),
-        date: "Sep 2024 - Jan 2025",
-        alignRight: true,
-    },
-];
+interface ExperienceItem {
+    title: string;
+    items: string[];
+    date: string;
+}
 
 const Qualification = () => {
+    const { t } = useTranslation();
     const [toggleState, setToggleState] = useState(1);
     const [visible, setVisible] = useState<Set<string>>(new Set());
     const containerRef = useRef<HTMLDivElement>(null);
+
+    const educationData = t('qualification.education', { returnObjects: true }) as EducationItem[];
+    const experienceData = t('qualification.experience', { returnObjects: true }) as ExperienceItem[];
 
     const toggleTab = (index: number) => {
         setToggleState(index)
@@ -89,12 +56,13 @@ const Qualification = () => {
         items.forEach((item) => observer.observe(item));
 
         return () => observer.disconnect();
-    }, [toggleState]);
+    }, [toggleState, educationData, experienceData]);
 
-    const renderTimeline = (data: TimelineItem[], tabKey: string) => (
-        <div className={toggleState === (tabKey === 'edu' ? 1 : 2) ? "qualification__content qualification__content-active" : "qualification__content"}>
-            {data.map((item, idx) => {
-                const key = `${tabKey}-${idx}`;
+    const renderEducation = () => (
+        <div className={toggleState === 1 ? "qualification__content qualification__content-active" : "qualification__content"}>
+            {educationData.map((item, idx) => {
+                const key = `edu-${idx}`;
+                const alignRight = idx % 2 === 1;
                 const content = (
                     <div className="qualification__content-item">
                         <h3 className="qualification__title">{item.title}</h3>
@@ -118,7 +86,60 @@ const Qualification = () => {
                         className={`qualification__data ${visible.has(key) ? 'qualification__data--visible' : ''}`}
                         style={{ '--i': idx } as React.CSSProperties & { '--i': number }}
                     >
-                        {item.alignRight ? (
+                        {alignRight ? (
+                            <>
+                                <div></div>
+                                {dotLine}
+                                {content}
+                            </>
+                        ) : (
+                            <>
+                                {content}
+                                {dotLine}
+                            </>
+                        )}
+                    </div>
+                );
+            })}
+        </div>
+    );
+
+    const renderExperience = () => (
+        <div className={toggleState === 2 ? "qualification__content qualification__content-active" : "qualification__content"}>
+            {experienceData.map((item, idx) => {
+                const key = `exp-${idx}`;
+                const alignRight = idx % 2 === 1;
+                const content = (
+                    <div className="qualification__content-item">
+                        <h3 className="qualification__title">{item.title}</h3>
+                        <span className="qualification__subtitle">
+                            {item.items.map((line, lineIdx) => (
+                                <span key={lineIdx}>
+                                    - {line}
+                                    <br />
+                                </span>
+                            ))}
+                        </span>
+                        <div className="qualification__calendar">
+                            <i className="uil uil-calendar-alt"></i> {item.date}
+                        </div>
+                    </div>
+                );
+                const dotLine = (
+                    <div>
+                        <span className="qualification__rounder"></span>
+                        <span className="qualification__line"></span>
+                    </div>
+                );
+
+                return (
+                    <div
+                        key={key}
+                        data-key={key}
+                        className={`qualification__data ${visible.has(key) ? 'qualification__data--visible' : ''}`}
+                        style={{ '--i': idx } as React.CSSProperties & { '--i': number }}
+                    >
+                        {alignRight ? (
                             <>
                                 <div></div>
                                 {dotLine}
@@ -138,26 +159,26 @@ const Qualification = () => {
 
     return (
         <section className='qualification section' id='qualification'>
-            <h2 className='section__title'>Qualification</h2>
-            <span className="section__subtitle">My Personal Journey</span>
+            <h2 className='section__title'>{t('qualification.title')}</h2>
+            <span className="section__subtitle">{t('qualification.subtitle')}</span>
 
             <div className="qualification__container container" ref={containerRef}>
                 <div className="qualification__tabs">
                     <div className={toggleState === 1 ? "qualification__button button--flex qualification__active" : "qualification__button button--flex"} onClick={() => toggleTab(1)}>
-                        <i className="uil uil-graduation-cap qualification__icon"></i> Education
+                        <i className="uil uil-graduation-cap qualification__icon"></i> {t('qualification.tabs.education')}
                     </div>
 
                     <div className={toggleState === 2 ? "qualification__button button--flex qualification__active" : "qualification__button button--flex"} onClick={() => toggleTab(2)}>
-                        <i className="uil uil-briefcase-alt qualification__icon"></i> Experience
+                        <i className="uil uil-briefcase-alt qualification__icon"></i> {t('qualification.tabs.experience')}
                     </div>
                 </div>
 
                 <div className="qualification__section">
-                    {renderTimeline(educationData, 'edu')}
+                    {renderEducation()}
                 </div>
 
                 <div className="qualification__section">
-                    {renderTimeline(experienceData, 'exp')}
+                    {renderExperience()}
                 </div>
             </div>
         </section>

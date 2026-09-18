@@ -1,3 +1,4 @@
+// src/components/scrollup/Scrollup.tsx
 import './scrollup.css'
 
 const Scrollup = () => {

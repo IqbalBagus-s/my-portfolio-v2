@@ -1,4 +1,4 @@
-
+// src/components/home/Social.tsx
 const Social = () => {
   return (
     <div className="home__social">

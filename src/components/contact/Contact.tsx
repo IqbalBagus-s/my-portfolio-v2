@@ -1,5 +1,7 @@
+// src/components/contact/Contact.tsx
 import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import { useTranslation } from 'react-i18next';
 import './contact.css'
 
 const COOLDOWN_MS = 60000;
@@ -14,6 +16,7 @@ interface ToastState {
 }
 
 const Contact = () => {
+    const { t } = useTranslation();
     const form = useRef<HTMLFormElement>(null);
     const [isSending, setIsSending] = useState(false);
     const [toast, setToast] = useState<ToastState | null>(null);
@@ -55,7 +58,7 @@ const Contact = () => {
         const remaining = getRemainingCooldown();
         if (remaining > 0) {
             const secondsLeft = Math.ceil(remaining / 1000);
-            showToast(`Mohon tunggu ${secondsLeft} detik sebelum mengirim lagi.`, 'warning');
+            showToast(t('contact.toast.cooldown', { seconds: secondsLeft }), 'warning');
             return;
         }
 
@@ -73,11 +76,11 @@ const Contact = () => {
             .then(() => {
                 localStorage.setItem(STORAGE_KEY, Date.now().toString());
                 (e.target as HTMLFormElement).reset();
-                showToast("Message successfully sent! I will reply as soon as possible.", 'success');
+                showToast(t('contact.toast.success'), 'success');
             })
             .catch((error) => {
                 console.error("Gagal mengirim email:", error);
-                showToast("Gagal mengirim pesan. Coba lagi nanti.", 'error');
+                showToast(t('contact.toast.error'), 'error');
             })
             .finally(() => {
                 setIsSending(false);
@@ -92,61 +95,61 @@ const Contact = () => {
 
   return (
     <section className='contact section' id='contact'>
-        <h2 className='section__title'>Get In Touch</h2>
-        <span className="section__subtitle">Contact Me</span>
+        <h2 className='section__title'>{t('contact.title')}</h2>
+        <span className="section__subtitle">{t('contact.subtitle')}</span>
 
         <div className="contact__container container grid">
             <div className="contact__content">
-                <h3 className="contact__title">Talk To me</h3>
+                <h3 className="contact__title">{t('contact.talkToMe')}</h3>
                 <div className="contact__info">
                     <div className="contact__card">
                         <i className="bx bx-mail-send contact__card-icon"></i>
-                        <h3 className="contact__card-title">Email</h3>
+                        <h3 className="contact__card-title">{t('contact.email')}</h3>
                         <span className="contact__card-data">iqbalbagussatriawan@gmail.com</span>
-                        <a href="mailto:iqbalbagussatriawan@gmail.com" className="contact__button">Write Me <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
+                        <a href="mailto:iqbalbagussatriawan@gmail.com" className="contact__button">{t('contact.writeMe')} <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
                     </div>
 
                     <div className="contact__card">
                         <i className="bx bxl-whatsapp contact__card-icon"></i>
-                        <h3 className="contact__card-title">WhatsApp</h3>
+                        <h3 className="contact__card-title">{t('contact.whatsapp')}</h3>
                         <span className="contact__card-data">+62-8233-5490-445</span>
-                        <a href="https://wa.me/+6282335490445" className="contact__button">Write Me <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
+                        <a href="https://wa.me/+6282335490445" className="contact__button">{t('contact.writeMe')} <i className="bx bx-right-arrow-alt contact__button-icon"></i></a>
                     </div>
                 </div>
             </div>
             <div className="contact__content">
-                <h3 className="contact__title">Write me your project</h3>
+                <h3 className="contact__title">{t('contact.formTitle')}</h3>
                 <form ref={form} onSubmit={sendEmail} noValidate>
                     <div className="contact__form-div">
-                        <label className="contact__form-tag">Name</label>
+                        <label className="contact__form-tag">{t('contact.nameLabel')}</label>
                         <input
                             type="text"
                             name='name'
                             className='contact__form-input'
-                            placeholder='Insert your name'
+                            placeholder={t('contact.namePlaceholder')}
                             required
                             minLength={2}
                         />
                     </div>
 
                     <div className="contact__form-div">
-                        <label className="contact__form-tag">Email</label>
+                        <label className="contact__form-tag">{t('contact.emailLabel')}</label>
                         <input
                             type="email"
                             name='email'
                             className='contact__form-input'
-                            placeholder='Insert your email'
+                            placeholder={t('contact.emailPlaceholder')}
                             required
                         />
                     </div>
                     <div className="contact__form-div contact__form-area">
-                        <label className="contact__form-tag">Project</label>
+                        <label className="contact__form-tag">{t('contact.projectLabel')}</label>
                         <textarea
                             name="project"
                             cols={30}
                             rows={10}
                             className="contact__form-input"
-                            placeholder='Write your project'
+                            placeholder={t('contact.projectPlaceholder')}
                             required
                             minLength={10}
                         ></textarea>
@@ -158,7 +161,7 @@ const Contact = () => {
                         disabled={isSending}
                         style={{ opacity: isSending ? 0.6 : 1, cursor: isSending ? 'not-allowed' : 'pointer' }}
                     >
-                        {isSending ? 'Sending...' : 'Send Message!'}
+                        {isSending ? t('contact.sending') : t('contact.sendButton')}
                         <svg
                             className="button__icon"
                             xmlns="http://www.w3.org/2000/svg"
@@ -184,7 +187,7 @@ const Contact = () => {
             <div className={`toast toast--${toast.type} ${isToastLeaving ? 'toast--leaving' : ''}`}>
                 <i className={`bx ${toastIcon[toast.type]} toast__icon`}></i>
                 <span className="toast__message">{toast.message}</span>
-                <button className="toast__close" onClick={closeToast} aria-label="Tutup notifikasi">
+                <button className="toast__close" onClick={closeToast} aria-label={t('contact.toast.closeAria')}>
                     <i className="bx bx-x"></i>
                 </button>
                 <div className="toast__progress"></div>
